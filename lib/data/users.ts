@@ -11,6 +11,9 @@ export const USERS: User[] = [
     role: "citizen",
     phone: "081234567890",
     address: "Jl. Dupat No. 24",
+    age: 30,
+    is_lansia: false,
+    gender: "laki-laki",
     scope_id: "pp-001.pd-001.kec-001.kel-001.rw-001.rt-001",
     detail: {
       rt: "05",
@@ -30,6 +33,9 @@ export const USERS: User[] = [
     role: "citizen",
     phone: "081234567891",
     address: "Jl. Cibubur No. 25",
+    age: 25,
+    is_lansia: false,
+    gender: "laki-laki",
     scope_id: "pp-001.pd-001.kec-001.kel-001.rw-001.rt-001",
     detail: {
       rt: "05",
@@ -49,6 +55,9 @@ export const USERS: User[] = [
     role: "citizen",
     phone: "081234567892",
     address: "Jl. Surabaya No. 66",
+    age: 50,
+    is_lansia: true,
+    gender: "laki-laki",
     scope_id: "pp-001.pd-001.kec-002.kel-002.rw-002.rt-002",
     detail: {
       rt: "05",
@@ -68,6 +77,9 @@ export const USERS: User[] = [
     role: "citizen",
     phone: "081234567893",
     address: "Jl. Melati No. 10",
+    age: 40,
+    is_lansia: false,
+    gender: "perempuan",
     scope_id: "pp-001.pd-001.kec-002.kel-002.rw-002.rt-002",
     detail: {
       rt: "07",

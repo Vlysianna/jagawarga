@@ -1,4 +1,12 @@
-export type UserRole = "citizen" | "rt" | "rw" | "kel" | "kec" | "pemda" | "pemprov";
+export type UserRole =
+  | "citizen"
+  | "rt"
+  | "rw"
+  | "kel"
+  | "kec"
+  | "pemda"
+  | "pemprov";
+export type gender = "laki-laki" | "perempuan";
 
 export interface UserDetail {
   rt: string | null;
@@ -19,6 +27,9 @@ export interface User {
   phone: string;
   address: string;
   avatar?: string;
+  age?: number;
+  is_lansia?: boolean;
+  gender?: gender;
   scope_id: string;
   detail: UserDetail;
 }
