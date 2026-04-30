@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FileText, Inbox, ArrowUpRight, Clock, CheckCircle, XCircle } from "lucide-react";
+import { FileText, Inbox, ArrowUpRight, Clock, CheckCircle, XCircle, Plus } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
+import Button from "@/components/ui/Button";
 import { StatusBadge, CategoryBadge } from "@/components/ui/Badge";
 import { REPORTS } from "@/lib/data/reports";
 import { REPORT_LEVEL_LABELS } from "@/lib/types/report";
@@ -51,6 +52,14 @@ export default function RTReportsPage() {
         title="Laporan"
         description="Kelola laporan dari warga dan laporan resmi berjenjang"
         icon={FileText}
+        actions={
+          <Link href="/rt/reports/new">
+            <Button size="sm">
+              <Plus size={16} className="mr-2" />
+              Buat Laporan Resmi
+            </Button>
+          </Link>
+        }
       />
       <div className="flex gap-1 mb-5 bg-neutral-bg rounded-xl p-1 max-w-md">
         <button
