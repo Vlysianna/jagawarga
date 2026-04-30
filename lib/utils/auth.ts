@@ -88,7 +88,8 @@ export function getDashboardPath(role: UserRole): string {
     case "kec":
       return "/kec/dashboard";
     case "pemda":
-    case "pemprov":
       return "/pemda/dashboard";
+    case "pemprov":
+      return "/pemprov/dashboard";
   }
 }
