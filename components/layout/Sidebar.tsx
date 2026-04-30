@@ -8,6 +8,7 @@ import {
   FileText,
   MessageSquare,
   LogOut,
+  Wallet,
   type LucideIcon,
 } from "lucide-react";
 import { getAuthUser, logout, getDashboardPath } from "@/lib/utils/auth";
@@ -26,6 +27,10 @@ function getNavItems(role: UserRole): NavItem[] {
   const items: NavItem[] = [
     { href: base, label: "Dashboard", icon: LayoutDashboard },
   ];
+
+  if (role === "citizen") {
+    items.push({ href: `${rolePrefix}/kas`, label: "Kas", icon: Wallet });
+  }
 
   items.push({ href: `${rolePrefix}/reports`, label: "Laporan", icon: FileText });
   items.push({ href: `${rolePrefix}/chat`, label: "Chat", icon: MessageSquare });
