@@ -1,5 +1,6 @@
 import {
   ReportLevel,
+  ReportStatus,
   ReportEscalation,
   REPORT_LEVEL_LABELS,
   REPORT_LEVEL_ORDER,
@@ -16,6 +17,7 @@ import {
 interface EscalationTimelineProps {
   escalations: ReportEscalation[];
   currentLevel: ReportLevel;
+  currentStatus?: ReportStatus;
 }
 
 function StepIcon({ status }: { status: string }) {

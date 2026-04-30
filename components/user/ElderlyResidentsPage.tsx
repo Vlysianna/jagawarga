@@ -102,6 +102,7 @@ export default function ElderlyResidentsPage() {
       : "Lihat warga lansia di lingkungan RT Anda";
 
   if (!authUser) return null;
+  const currentUser = authUser;
 
   function resetForm() {
     setForm(EMPTY_VISIT_FORM);
@@ -120,8 +121,8 @@ export default function ElderlyResidentsPage() {
       companionName: form.companionName.trim(),
       notes: form.notes.trim(),
       status: form.status,
-      createdBy: authUser.id,
-      createdByName: authUser.name,
+      createdBy: currentUser.id,
+      createdByName: currentUser.name,
     };
 
     const nextVisits = upsertElderlyVisit(nextVisit);
@@ -189,7 +190,7 @@ export default function ElderlyResidentsPage() {
               onFormChange={setForm}
               onSubmitVisit={handleSubmitVisit}
               onDeleteVisit={handleDeleteVisit}
-              isRT={authUser.role === "rt"}
+              isRT={currentUser.role === "rt"}
             />
           ))
         )}

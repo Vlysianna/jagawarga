@@ -1,8 +1,4 @@
-import dynamic from "next/dynamic";
-
-const ChatWorkspace = dynamic(() => import("@/components/chat/ChatWorkspace"), {
-  ssr: false,
-});
+import ChatWorkspace from "@/components/chat/ChatWorkspace";
 
 function getInitialMode(mode?: string) {
   return mode === "private" || mode === "rt" ? mode : "all";

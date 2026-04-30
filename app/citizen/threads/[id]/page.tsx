@@ -70,6 +70,8 @@ export default function Page() {
     );
   }
 
+  const resolvedThread = thread;
+
   const totalVotes = thread.pollOptions
     ? thread.pollOptions.reduce(
         (sum, option) => sum + option.votes.length,
@@ -96,7 +98,7 @@ export default function Page() {
 
     const newComment: ThreadComment = {
       id: `c-${Date.now()}`,
-      threadId: thread.id,
+      threadId: resolvedThread.id,
       authorId: user.id,
       authorName: user.name,
       authorRole: authorRole as ThreadComment["authorRole"],
