@@ -18,6 +18,7 @@ export interface User {
   role: UserRole;
   phone: string;
   address: string;
+  avatar?: string;
   scope_id: string;
   detail: UserDetail;
 }
