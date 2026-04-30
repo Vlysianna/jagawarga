@@ -1,6 +1,13 @@
+import { UserRole } from "./user";
+
 export type ReportStatus = "pending" | "approved" | "rejected" | "forwarded";
-export type ReportCategory = "infrastructure" | "facility" | "safety" | "health" | "other";
-export type ReportLevel = "rt" | "rw" | "kelurahan" | "kecamatan" | "pemda";
+export type ReportCategory =
+  | "infrastructure"
+  | "facility"
+  | "safety"
+  | "health"
+  | "other";
+export type ReportLevel = Exclude<UserRole, "pemprov">;
 
 export interface ReportEscalation {
   from: ReportLevel;
@@ -18,12 +25,11 @@ export interface Report {
   title: string;
   description: string;
   category: ReportCategory;
-  estimatedBudget: number;
-  photoUrl?: string;
+  estimatedBudget?: number;
+  photo: string[];
 
   // Author
   authorId: string;
-  authorNik?: string;
   authorName: string;
   rt: string;
   rw: string;
@@ -58,13 +64,19 @@ export const REPORT_STATUS_LABELS: Record<ReportStatus, string> = {
 };
 
 export const REPORT_LEVEL_LABELS: Record<ReportLevel, string> = {
+  citizen: "Warga",
   rt: "RT",
   rw: "RW",
-  kelurahan: "Kelurahan",
-  kecamatan: "Kecamatan",
+  kel: "Kelurahan",
+  kec: "Kecamatan",
   pemda: "Pemerintah Daerah",
 };
 
 export const REPORT_LEVEL_ORDER: ReportLevel[] = [
-  "rt", "rw", "kelurahan", "kecamatan", "pemda",
+  "citizen",
+  "rt",
+  "rw",
+  "kel",
+  "kec",
+  "pemda",
 ];
