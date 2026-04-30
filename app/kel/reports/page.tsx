@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FileText, Clock, CheckCircle, XCircle, ArrowUpRight } from "lucide-react";
+import { FileText, Clock, CheckCircle, XCircle, ArrowUpRight, Plus } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
+import Button from "@/components/ui/Button";
 import { StatusBadge, CategoryBadge } from "@/components/ui/Badge";
 import { REPORTS } from "@/lib/data/reports";
 import { REPORT_LEVEL_LABELS } from "@/lib/types/report";
@@ -66,6 +67,14 @@ export default function KelReportsPage() {
         title="Laporan"
         description={`${pendingCount} laporan menunggu tindakan`}
         icon={FileText}
+        actions={
+          <Link href="/kel/reports/new">
+            <Button size="sm">
+              <Plus size={16} className="mr-2" />
+              Buat Laporan Resmi
+            </Button>
+          </Link>
+        }
       />
 
       {/* Filter */}
