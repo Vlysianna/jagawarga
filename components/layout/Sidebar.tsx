@@ -109,7 +109,6 @@ export default function Sidebar() {
   const MAX_VISIBLE = 5;
   const visibleItems = navItems.slice(0, MAX_VISIBLE - 1);
   const overflowItems = navItems.slice(MAX_VISIBLE - 1);
-  const hasOverflow = overflowItems.length > 0;
 
   function handleLogout() {
     logout();
@@ -382,24 +381,22 @@ export default function Sidebar() {
           })}
 
           {/* Tombol "Lainnya" — selalu muncul kalau ada overflow */}
-          {hasOverflow && (
-            <button
-              type="button"
-              onClick={() => setMoreOpen((c) => !c)}
-              className={`flex min-w-0 flex-1 flex-col items-center justify-center rounded-2xl px-2 py-2 text-[11px] font-medium transition-colors ${
-                moreOpen ||
-                overflowItems.some(
-                  (item) =>
-                    item.href && isActivePath(pathname, item.href, user.role),
-                )
-                  ? "bg-blue-light text-blue-primary"
-                  : "text-neutral-text hover:bg-neutral-bg"
-              }`}
-            >
-              <MoreHorizontal size={18} />
-              <span className="mt-1">Lainnya</span>
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={() => setMoreOpen((c) => !c)}
+            className={`flex min-w-0 flex-1 flex-col items-center justify-center rounded-2xl px-2 py-2 text-[11px] font-medium transition-colors ${
+              moreOpen ||
+              overflowItems.some(
+                (item) =>
+                  item.href && isActivePath(pathname, item.href, user.role),
+              )
+                ? "bg-blue-light text-blue-primary"
+                : "text-neutral-text hover:bg-neutral-bg"
+            }`}
+          >
+            <MoreHorizontal size={18} />
+            <span className="mt-1">Lainnya</span>
+          </button>
         </div>
       </nav>
     </>
