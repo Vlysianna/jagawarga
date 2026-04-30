@@ -6,6 +6,7 @@ const AUTH_COOKIE = "jagawarga_auth";
 function toAuthUser(user: User): AuthUser {
   return {
     id: user.id,
+    nik: user.nik,
     name: user.name,
     email: user.email,
     role: user.role,

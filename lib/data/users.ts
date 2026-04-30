@@ -4,6 +4,7 @@ export const USERS: User[] = [
   // warga
   {
     id: "w-001",
+    nik: "3201011234560001",
     name: "serge solo",
     email: "serge@local.com",
     password: "password",
@@ -22,6 +23,7 @@ export const USERS: User[] = [
   },
   {
     id: "w-002",
+    nik: "3201011234560002",
     name: "serge dewa",
     email: "sede@local.com",
     password: "password",
@@ -40,6 +42,7 @@ export const USERS: User[] = [
   },
   {
     id: "w-003",
+    nik: "3201021234560003",
     name: "tes warga",
     email: "teswarga@local.com",
     password: "password",
@@ -60,6 +63,7 @@ export const USERS: User[] = [
   // ketua rt
   {
     id: "rt-001",
+    nik: "3201011234560010",
     name: "tesrt",
     email: "rt@local.com",
     password: "password",
@@ -80,6 +84,7 @@ export const USERS: User[] = [
   // ketua rw
   {
     id: "rw-001",
+    nik: "3201011234560020",
     name: "tes rw",
     email: "tesrw@local.com",
     password: "password",
@@ -176,6 +181,7 @@ export const USERS: User[] = [
   // PEMDA
   {
     id: "pd-001",
+    nik: "234567",
     name: "pemda admin",
     email: "pemda@local.com",
     password: "password",
@@ -196,6 +202,7 @@ export const USERS: User[] = [
   // PEMPROV
   {
     id: "pp-001",
+    nik: "2345678",
     name: "pemprov admin",
     email: "pemprov@local.com",
     password: "password",
