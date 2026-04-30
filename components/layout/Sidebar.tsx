@@ -9,6 +9,7 @@ import {
   MessageSquare,
   LogOut,
   ChevronUp,
+  Wallet,
   type LucideIcon,
 } from "lucide-react";
 import { getAuthUser, logout, getDashboardPath } from "@/lib/utils/auth";
@@ -28,7 +29,7 @@ function getNavItems(role: UserRole): NavItem[] {
   const base = getDashboardPath(role);
   const rolePrefix = base.replace("/dashboard", "");
 
-  return [
+  const items: NavItem[] = [
     { href: base, label: "Dashboard", icon: LayoutDashboard },
     {
       label: "Chat",
@@ -40,6 +41,11 @@ function getNavItems(role: UserRole): NavItem[] {
     },
     { href: `${rolePrefix}/reports`, label: "Laporan", icon: FileText },
   ];
+
+  if (role === "citizen")
+    items.push({ href: `${rolePrefix}/kas`, label: "Kas", icon: Wallet });
+
+  return items;
 }
 
 function isActivePath(pathname: string, href: string, role: UserRole) {
@@ -138,10 +144,15 @@ export default function Sidebar() {
               }
 
               return (
-                <div key={item.label} className="rounded-2xl border border-neutral-border bg-white p-2">
+                <div
+                  key={item.label}
+                  className="rounded-2xl border border-neutral-border bg-white p-2"
+                >
                   <div
                     className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium ${
-                      active ? "bg-blue-light text-blue-primary" : "text-neutral-dark"
+                      active
+                        ? "bg-blue-light text-blue-primary"
+                        : "text-neutral-dark"
                     }`}
                   >
                     <Icon size={18} />
