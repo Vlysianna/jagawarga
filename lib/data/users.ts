@@ -33,8 +33,8 @@ export const USERS: User[] = [
     role: "citizen",
     phone: "081234567891",
     address: "Jl. Cibubur No. 25",
-    age: 25,
-    is_lansia: false,
+    age: 40,
+    is_lansia: true,
     gender: "laki-laki",
     scope_id: "pp-001.pd-001.kec-001.kel-001.rw-001.rt-001",
     detail: {

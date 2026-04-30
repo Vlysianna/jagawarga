@@ -7,6 +7,7 @@ export type UserRole =
   | "pemda"
   | "pemprov";
 export type gender = "laki-laki" | "perempuan";
+export type ElderlyVisitStatus = "planned" | "completed" | "cancelled";
 
 export interface UserDetail {
   rt: string | null;
@@ -44,6 +45,17 @@ export interface AuthUser {
   detail: UserDetail;
 }
 
+export interface ElderlyVisitSchedule {
+  id: string;
+  userId: string;
+  scheduledAt: string;
+  companionName: string;
+  notes: string;
+  status: ElderlyVisitStatus;
+  createdBy: string;
+  createdByName: string;
+}
+
 export function getVoterId(user: AuthUser | User): string {
   return user.nik || user.id;
 }
@@ -56,4 +68,10 @@ export const ROLE_LABELS: Record<UserRole, string> = {
   kec: "Kecamatan",
   pemda: "Pemerintah Daerah",
   pemprov: "Pemerintah Provinsi",
+};
+
+export const ELDERLY_VISIT_STATUS_LABELS: Record<ElderlyVisitStatus, string> = {
+  planned: "Terjadwal",
+  completed: "Selesai",
+  cancelled: "Dibatalkan",
 };

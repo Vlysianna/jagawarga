@@ -1,9 +1,10 @@
 "use client";
 
 import { USERS } from "@/lib/data/users";
-import { User } from "@/lib/types/user";
+import { ElderlyVisitSchedule, User } from "@/lib/types/user";
 
 const USERS_STORAGE_KEY = "jagawarga_users";
+const ELDERLY_VISITS_STORAGE_KEY = "jagawarga_elderly_visits";
 
 function hasWindow(): boolean {
   return typeof window !== "undefined";
@@ -55,4 +56,58 @@ export function removeUser(userId: string): User[] {
 export function createUserId(role: User["role"]): string {
   const suffix = Math.random().toString(36).slice(2, 8);
   return `${role}-${suffix}`;
+}
+
+export function readElderlyVisits(): ElderlyVisitSchedule[] {
+  if (!hasWindow()) {
+    return [];
+  }
+
+  const stored = window.localStorage.getItem(ELDERLY_VISITS_STORAGE_KEY);
+  if (!stored) {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(stored) as ElderlyVisitSchedule[];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+export function writeElderlyVisits(
+  visits: ElderlyVisitSchedule[]
+): void {
+  if (!hasWindow()) {
+    return;
+  }
+
+  window.localStorage.setItem(
+    ELDERLY_VISITS_STORAGE_KEY,
+    JSON.stringify(visits)
+  );
+}
+
+export function upsertElderlyVisit(
+  nextVisit: ElderlyVisitSchedule
+): ElderlyVisitSchedule[] {
+  const current = readElderlyVisits();
+  const exists = current.some((visit) => visit.id === nextVisit.id);
+  const nextVisits = exists
+    ? current.map((visit) => (visit.id === nextVisit.id ? nextVisit : visit))
+    : [nextVisit, ...current];
+
+  writeElderlyVisits(nextVisits);
+  return nextVisits;
+}
+
+export function removeElderlyVisit(visitId: string): ElderlyVisitSchedule[] {
+  const nextVisits = readElderlyVisits().filter((visit) => visit.id !== visitId);
+  writeElderlyVisits(nextVisits);
+  return nextVisits;
+}
+
+export function createVisitId(): string {
+  return `visit-${Math.random().toString(36).slice(2, 10)}`;
 }
