@@ -10,18 +10,27 @@ import { ROLE_LABELS, AuthUser } from "@/lib/types/user";
 export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const [user, setUser] = useState<AuthUser | null>(null);
   const [mounted, setMounted] = useState(false);
+  const user: AuthUser | null = mounted ? getAuthUser() : null;
 
   useEffect(() => {
-    setUser(getAuthUser());
-    setMounted(true);
+    queueMicrotask(() => setMounted(true));
   }, []);
 
   if (!mounted || !user) return null;
 
   const dashboardHref = getDashboardPath(user.role);
   const isActive = pathname === dashboardHref || pathname.startsWith(dashboardHref + "/");
+  const detailText = [
+    user.detail?.provinsi,
+    user.detail?.daerah,
+    user.detail?.kecamatan && `Kec. ${user.detail.kecamatan}`,
+    user.detail?.kelurahan && `Kel. ${user.detail.kelurahan}`,
+    user.detail?.rw && `RW ${user.detail.rw}`,
+    user.detail?.rt && `RT ${user.detail.rt}`,
+  ]
+    .filter(Boolean)
+    .join(" · ");
 
   function handleLogout() {
     logout();
@@ -49,7 +58,7 @@ export default function Sidebar() {
         </p>
         <p className="text-xs text-neutral-text mt-0.5">
           {ROLE_LABELS[user.role]}
-          {user.role !== "pemda" && ` · RT ${user.rt} / RW ${user.rw}`}
+          {detailText && ` · ${detailText}`}
         </p>
       </div>
 

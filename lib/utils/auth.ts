@@ -9,10 +9,8 @@ function toAuthUser(user: User): AuthUser {
     name: user.name,
     email: user.email,
     role: user.role,
-    rt: user.rt,
-    rw: user.rw,
-    kelurahan: user.kelurahan,
-    kecamatan: user.kecamatan,
+    scope_id: user.scope_id,
+    detail: user.detail,
   };
 }
 
@@ -84,7 +82,10 @@ export function getDashboardPath(role: UserRole): string {
       return "/rt/dashboard";
     case "rw":
       return "/rw/dashboard";
+    case "kel":
+    case "kec":
     case "pemda":
+    case "pemprov":
       return "/pemda/dashboard";
   }
 }

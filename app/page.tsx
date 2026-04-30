@@ -12,7 +12,10 @@ export default async function Home() {
         citizen: "/citizen/dashboard",
         rt: "/rt/dashboard",
         rw: "/rw/dashboard",
+        kel: "/kel/dashboard",
+        kec: "/kec/dashboard",
         pemda: "/pemda/dashboard",
+        pemprov: "/pemprov/dashboard",
       };
       const path = dashboardMap[user.role];
       if (path) redirect(path);

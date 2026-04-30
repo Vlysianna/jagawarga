@@ -4,14 +4,20 @@ const PROTECTED_ROUTES: Record<string, string[]> = {
   "/citizen": ["citizen"],
   "/rt": ["rt"],
   "/rw": ["rw"],
+  "/kel": ["kel"],
+  "/kec": ["kec"],
   "/pemda": ["pemda"],
+  "/pemprov": ["pemprov"],
 };
 
 const ROLE_DASHBOARD: Record<string, string> = {
   citizen: "/citizen/dashboard",
   rt: "/rt/dashboard",
   rw: "/rw/dashboard",
+  kel: "/kel/dashboard",
+  kec: "/kec/dashboard",
   pemda: "/pemda/dashboard",
+  pemprov: "/pemprov/dashboard",
 };
 
 function getAuthFromCookie(request: NextRequest) {
