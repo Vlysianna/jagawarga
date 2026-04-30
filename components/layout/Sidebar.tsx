@@ -3,9 +3,33 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, LogOut } from "lucide-react";
+import {
+  LayoutDashboard,
+  FileText,
+  LogOut,
+  type LucideIcon,
+} from "lucide-react";
 import { getAuthUser, logout, getDashboardPath } from "@/lib/utils/auth";
-import { ROLE_LABELS, AuthUser } from "@/lib/types/user";
+import { ROLE_LABELS, AuthUser, UserRole } from "@/lib/types/user";
+
+interface NavItem {
+  href: string;
+  label: string;
+  icon: LucideIcon;
+}
+
+function getNavItems(role: UserRole): NavItem[] {
+  const base = getDashboardPath(role);
+  const rolePrefix = base.replace("/dashboard", "");
+
+  const items: NavItem[] = [
+    { href: base, label: "Dashboard", icon: LayoutDashboard },
+  ];
+
+  items.push({ href: `${rolePrefix}/reports`, label: "Laporan", icon: FileText });
+
+  return items;
+}
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -19,8 +43,7 @@ export default function Sidebar() {
 
   if (!mounted || !user) return null;
 
-  const dashboardHref = getDashboardPath(user.role);
-  const isActive = pathname === dashboardHref || pathname.startsWith(dashboardHref + "/");
+  const navItems = getNavItems(user.role);
   const detailText = [
     user.detail?.provinsi,
     user.detail?.daerah,
@@ -64,21 +87,34 @@ export default function Sidebar() {
 
       {/* Navigation */}
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-        <Link
-          href={dashboardHref}
-          className={`
-            flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium
-            transition-colors duration-150
-            ${
-              isActive
-                ? "bg-blue-light text-blue-primary"
-                : "text-neutral-dark hover:bg-neutral-bg"
-            }
-          `}
-        >
-          <LayoutDashboard size={20} />
-          <span>Dashboard</span>
-        </Link>
+        {navItems.map((item) => {
+          const isActive =
+            pathname === item.href ||
+            (item.href !== getDashboardPath(user.role) &&
+              pathname.startsWith(item.href + "/")) ||
+            (item.href === getDashboardPath(user.role) &&
+              pathname === item.href);
+          const Icon = item.icon;
+
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`
+                flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium
+                transition-colors duration-150
+                ${
+                  isActive
+                    ? "bg-blue-light text-blue-primary"
+                    : "text-neutral-dark hover:bg-neutral-bg"
+                }
+              `}
+            >
+              <Icon size={20} />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
       </nav>
 
       {/* Logout */}

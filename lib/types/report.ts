@@ -15,6 +15,7 @@ export interface ReportEscalation {
   date: string;
   note: string;
   status: ReportStatus;
+  estimatedBudget?: number;
   respondedBy?: string;
   respondedAt?: string;
   rejectionReason?: string;

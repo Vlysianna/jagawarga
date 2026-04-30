@@ -3,6 +3,6 @@
 import { ReactNode } from "react";
 import DashboardPage from "@/components/layout/DashboardPage";
 
-export default function CitizenLayout({ children }: { children: ReactNode }) {
+export default function KelLayout({ children }: { children: ReactNode }) {
   return <DashboardPage>{children}</DashboardPage>;
 }

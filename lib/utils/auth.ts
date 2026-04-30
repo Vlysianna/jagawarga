@@ -84,7 +84,9 @@ export function getDashboardPath(role: UserRole): string {
     case "rw":
       return "/rw/dashboard";
     case "kel":
+      return "/kel/dashboard";
     case "kec":
+      return "/kec/dashboard";
     case "pemda":
     case "pemprov":
       return "/pemda/dashboard";

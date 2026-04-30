@@ -69,6 +69,8 @@ export const config = {
     "/citizen/:path*",
     "/rt/:path*",
     "/rw/:path*",
+    "/kel/:path*",
+    "/kec/:path*",
     "/pemda/:path*",
     "/auth/:path*",
   ],
