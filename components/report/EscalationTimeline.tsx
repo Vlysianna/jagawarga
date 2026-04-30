@@ -77,20 +77,20 @@ export default function EscalationTimeline({
         <p className="text-xs font-medium text-neutral-text mb-3 uppercase tracking-wide">
           Progres Eskalasi
         </p>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 overflow-x-auto pb-1">
           {REPORT_LEVEL_ORDER.map((level, idx) => {
             const isActive = idx <= currentIdx;
             const isCurrent = idx === currentIdx;
             return (
-              <div key={level} className="flex items-center gap-1 flex-1">
-                <div className="flex flex-col items-center flex-1">
+              <div key={level} className="flex min-w-14 flex-1 items-center gap-1">
+                <div className="flex flex-1 flex-col items-center">
                   <div
                     className={`w-full h-2 rounded-full ${
                       isActive ? "bg-blue-primary" : "bg-neutral-border"
                     }`}
                   />
                   <span
-                    className={`text-[10px] mt-1.5 font-medium ${
+                    className={`mt-1.5 text-center text-[10px] font-medium ${
                       isCurrent
                         ? "text-blue-primary font-bold"
                         : isActive
@@ -112,7 +112,7 @@ export default function EscalationTimeline({
         {escalations.map((esc, idx) => {
           const isLast = idx === escalations.length - 1;
           return (
-            <div key={idx} className="flex gap-4">
+            <div key={idx} className="flex gap-3 sm:gap-4">
               <div className="flex flex-col items-center">
                 <StepIcon status={esc.status} />
                 {!isLast && (

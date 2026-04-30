@@ -53,7 +53,7 @@ export default function CitizenNewReportPage() {
       />
 
       <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="bg-white rounded-xl border border-neutral-border p-5 space-y-5">
+        <div className="space-y-5 rounded-xl border border-neutral-border bg-white p-4 sm:p-5">
           <Input
             label="Judul Laporan"
             placeholder="Contoh: Jalan berlubang di depan rumah No. 15"
@@ -108,7 +108,7 @@ export default function CitizenNewReportPage() {
             <label className="text-sm font-medium text-neutral-dark">
               Foto (opsional)
             </label>
-            <div className="border-2 border-dashed border-neutral-border rounded-xl p-8 text-center">
+            <div className="rounded-xl border-2 border-dashed border-neutral-border p-6 text-center sm:p-8">
               <p className="text-sm text-neutral-text">
                 Klik atau seret foto ke sini
               </p>
@@ -129,14 +129,19 @@ export default function CitizenNewReportPage() {
           </p>
         </div>
 
-        <div className="flex gap-3">
-          <Button type="submit" disabled={!title || !category || !description}>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button
+            type="submit"
+            disabled={!title || !category || !description}
+            className="w-full sm:w-auto"
+          >
             Kirim Laporan
           </Button>
           <Button
             type="button"
             variant="ghost"
             onClick={() => router.push("/citizen/reports")}
+            className="w-full sm:w-auto"
           >
             Batal
           </Button>

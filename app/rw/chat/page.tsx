@@ -4,6 +4,17 @@ const ChatWorkspace = dynamic(() => import("@/components/chat/ChatWorkspace"), {
   ssr: true,
 });
 
-export default function RWChatPage() {
-  return <ChatWorkspace />;
+function getInitialMode(mode?: string) {
+  return mode === "private" || mode === "rt" ? mode : "all";
+}
+
+export default async function RWChatPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ mode?: string }>;
+}) {
+  const { mode } = await searchParams;
+  const initialMode = getInitialMode(mode);
+
+  return <ChatWorkspace key={initialMode} initialMode={initialMode} />;
 }

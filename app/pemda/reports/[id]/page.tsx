@@ -76,9 +76,9 @@ export default function PemdaReportDetailPage({
     <div>
       <PageHeader title="Detail Laporan" backHref="/pemda/reports" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {/* Report info */}
-        <div className="bg-white rounded-xl border border-neutral-border p-5">
+        <div className="rounded-xl border border-neutral-border bg-white p-4 sm:p-5">
           <h2 className="text-lg font-bold text-foreground mb-2">{report.title}</h2>
           <div className="flex items-center gap-2 flex-wrap mb-4">
             <CategoryBadge category={report.category} />
@@ -95,7 +95,7 @@ export default function PemdaReportDetailPage({
         </div>
 
         {/* Escalation timeline */}
-        <div className="bg-white rounded-xl border border-neutral-border p-5">
+        <div className="rounded-xl border border-neutral-border bg-white p-4 sm:p-5">
           {report.escalations.length > 0 ? (
             <>
               <h3 className="text-sm font-bold text-foreground mb-4">Riwayat Eskalasi</h3>
@@ -115,7 +115,7 @@ export default function PemdaReportDetailPage({
 
       {/* Action */}
       {canAct && (
-        <div className="bg-white rounded-xl border border-neutral-border p-5 mt-4">
+        <div className="mt-4 rounded-xl border border-neutral-border bg-white p-4 sm:p-5">
           <h3 className="text-sm font-bold text-foreground mb-4">Keputusan</h3>
 
           {!action && (
@@ -125,11 +125,11 @@ export default function PemdaReportDetailPage({
                   Anda adalah <strong>level terakhir</strong>. Keputusan Anda bersifat final untuk laporan ini.
                 </p>
               </div>
-              <div className="flex gap-3">
-                <Button size="sm" variant="primary" onClick={() => setAction("approve")}>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button size="sm" variant="primary" onClick={() => setAction("approve")} className="w-full sm:w-auto">
                   Setujui & Alokasikan Anggaran
                 </Button>
-                <Button size="sm" variant="danger" onClick={() => setAction("reject")}>
+                <Button size="sm" variant="danger" onClick={() => setAction("reject")} className="w-full sm:w-auto">
                   Tolak
                 </Button>
               </div>
@@ -153,9 +153,9 @@ export default function PemdaReportDetailPage({
                   className="w-full px-4 py-3 text-base rounded-xl border bg-white text-foreground placeholder:text-neutral-text/50 border-neutral-border focus:outline-none focus:ring-2 focus:ring-blue-border focus:border-blue-primary resize-none"
                 />
               </div>
-              <div className="flex gap-3">
-                <Button size="sm" onClick={handleSubmitAction}>Setujui Laporan</Button>
-                <Button size="sm" variant="ghost" onClick={() => setAction("")}>Batal</Button>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button size="sm" onClick={handleSubmitAction} className="w-full sm:w-auto">Setujui Laporan</Button>
+                <Button size="sm" variant="ghost" onClick={() => setAction("")} className="w-full sm:w-auto">Batal</Button>
               </div>
             </div>
           )}
@@ -173,9 +173,9 @@ export default function PemdaReportDetailPage({
                   className="w-full px-4 py-3 text-base rounded-xl border bg-white text-foreground placeholder:text-neutral-text/50 border-neutral-border focus:outline-none focus:ring-2 focus:ring-blue-border focus:border-blue-primary resize-none"
                 />
               </div>
-              <div className="flex gap-3">
-                <Button size="sm" variant="danger" onClick={handleSubmitAction} disabled={!note}>Tolak Laporan</Button>
-                <Button size="sm" variant="ghost" onClick={() => setAction("")}>Batal</Button>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button size="sm" variant="danger" onClick={handleSubmitAction} disabled={!note} className="w-full sm:w-auto">Tolak Laporan</Button>
+                <Button size="sm" variant="ghost" onClick={() => setAction("")} className="w-full sm:w-auto">Batal</Button>
               </div>
             </div>
           )}

@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 
 interface DashboardPageProps {
@@ -9,10 +9,14 @@ interface DashboardPageProps {
 
 export default function DashboardPage({ children }: DashboardPageProps) {
   return (
-    <div className="flex min-h-screen bg-neutral-bg">
-      <Sidebar />
-      <main className="flex-1 flex flex-col min-h-screen">
-        <div className="flex-1 p-6">{children}</div>
+    <div className="min-h-screen bg-neutral-bg md:grid md:grid-cols-[280px_minmax(0,1fr)]">
+      <Suspense fallback={null}>
+        <Sidebar />
+      </Suspense>
+      <main className="min-w-0">
+        <div className="mx-auto flex w-full max-w-7xl flex-col px-4 py-4 pb-24 sm:px-6 sm:py-6 sm:pb-6 md:px-8 md:pb-8">
+          {children}
+        </div>
       </main>
     </div>
   );

@@ -14,6 +14,8 @@ import {
   getVisibleChatThreads,
 } from "@/lib/utils/chat";
 
+type ChatMode = "all" | "private" | "rt";
+
 function formatMessageTime(value: string) {
   return new Date(value).toLocaleString("id-ID", {
     day: "numeric",
@@ -29,12 +31,16 @@ function typeStyles(type: "private" | "rt-group") {
     : "bg-blue-light text-blue-dark";
 }
 
-export default function ChatWorkspace() {
+export default function ChatWorkspace({
+  initialMode = "all",
+}: {
+  initialMode?: ChatMode;
+}) {
   const user = getAuthUser();
   const baseThreads = user ? getVisibleChatThreads(user) : [];
   const contacts = user ? getAvailableChatContacts(user) : [];
   const [threads, setThreads] = useState(baseThreads);
-  const [selectedId, setSelectedId] = useState(baseThreads[0]?.id ?? "");
+  const [selectedId, setSelectedId] = useState("");
   const [draft, setDraft] = useState("");
   const messageCounter = useRef(0);
 
@@ -44,9 +50,19 @@ export default function ChatWorkspace() {
 
   const privateThreads = threads.filter((thread) => thread.type === "private");
   const rtGroupThreads = threads.filter((thread) => thread.type === "rt-group");
+  const visiblePrivateThreads = initialMode === "rt" ? [] : privateThreads;
+  const visibleRtGroupThreads = initialMode === "private" ? [] : rtGroupThreads;
+  const selectableThreads =
+    initialMode === "private"
+      ? visiblePrivateThreads
+      : initialMode === "rt"
+        ? visibleRtGroupThreads
+        : threads;
 
   const selectedThread =
-    threads.find((thread) => thread.id === selectedId) ?? threads[0] ?? null;
+    selectableThreads.find((thread) => thread.id === selectedId) ??
+    selectableThreads[0] ??
+    null;
 
   function handleSend() {
     if (!user) {
@@ -102,20 +118,23 @@ export default function ChatWorkspace() {
                 Daftar Chat
               </h2>
               <p className="text-xs text-neutral-text mt-1">
-                Warga hanya melihat private antarwarga. Akun RT mendapat jalur
-                ke atas.
+                {initialMode === "private"
+                  ? "Menampilkan jalur chat private yang bisa diakses akun ini."
+                  : initialMode === "rt"
+                    ? "Menampilkan ruang RT yang tersedia untuk wilayah akun ini."
+                    : "Warga hanya melihat private antarwarga. Akun RT mendapat jalur ke atas."}
               </p>
             </div>
             <div className="p-3 space-y-4">
               <ChatSection
                 title="Ruang RT"
-                threads={rtGroupThreads}
+                threads={visibleRtGroupThreads}
                 selectedId={selectedThread?.id ?? ""}
                 onSelect={setSelectedId}
               />
               <ChatSection
                 title="Private"
-                threads={privateThreads}
+                threads={visiblePrivateThreads}
                 selectedId={selectedThread?.id ?? ""}
                 onSelect={setSelectedId}
               />
@@ -133,7 +152,7 @@ export default function ChatWorkspace() {
               {contacts.slice(0, 8).map((contact) => (
                 <div
                   key={contact.id}
-                  className="flex items-center justify-between rounded-xl bg-neutral-bg px-3 py-2"
+                  className="flex flex-col gap-1 rounded-xl bg-neutral-bg px-3 py-2 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div>
                     <p className="text-sm font-medium text-foreground">
@@ -154,11 +173,11 @@ export default function ChatWorkspace() {
           </div>
         </section>
 
-        <section className="bg-white rounded-2xl border border-neutral-border overflow-hidden min-h-140 flex flex-col">
+        <section className="flex min-h-[32rem] flex-col overflow-hidden rounded-2xl border border-neutral-border bg-white">
           {selectedThread ? (
             <>
-              <div className="px-5 py-4 border-b border-neutral-border">
-                <div className="flex items-start justify-between gap-3">
+              <div className="border-b border-neutral-border px-4 py-4 sm:px-5">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h2 className="text-lg font-bold text-foreground">
                       {selectedThread.title}
@@ -175,7 +194,7 @@ export default function ChatWorkspace() {
                 </div>
               </div>
 
-              <div className="flex-1 px-5 py-5 space-y-4 bg-neutral-bg/50">
+              <div className="flex-1 space-y-4 bg-neutral-bg/50 px-4 py-4 sm:px-5 sm:py-5">
                 {selectedThread.messages.map((message) => {
                   const isOwn = message.authorId === user.id;
 
@@ -185,7 +204,7 @@ export default function ChatWorkspace() {
                       className={`flex ${isOwn ? "justify-end" : "justify-start"}`}
                     >
                       <div
-                        className={`max-w-xl rounded-2xl px-4 py-3 border ${
+                        className={`max-w-[85%] rounded-2xl border px-4 py-3 sm:max-w-xl ${
                           isOwn
                             ? "bg-blue-primary text-white border-blue-primary"
                             : "bg-white text-foreground border-neutral-border"
@@ -217,19 +236,19 @@ export default function ChatWorkspace() {
                 })}
               </div>
 
-              <div className="px-5 py-4 border-t border-neutral-border">
-                <div className="flex gap-3">
+              <div className="border-t border-neutral-border px-4 py-4 sm:px-5">
+                <div className="flex flex-col gap-3 sm:flex-row">
                   <textarea
                     value={draft}
                     onChange={(event) => setDraft(event.target.value)}
                     rows={3}
-                    placeholder="Tulis pesan dummy di sini..."
+                    placeholder="Tulis pesan di sini..."
                     className="flex-1 rounded-2xl border border-neutral-border bg-white px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-blue-border"
                   />
                   <Button
                     type="button"
                     onClick={handleSend}
-                    className="self-end"
+                    className="self-stretch sm:self-end"
                   >
                     <Send size={16} className="mr-2" />
                     Kirim
@@ -292,12 +311,12 @@ function ChatSection({
                   : "border-neutral-border hover:bg-neutral-bg"
               }`}
             >
-              <div className="flex items-start justify-between gap-3 mb-1.5">
+              <div className="mb-1.5 flex items-start justify-between gap-3">
                 <p className="text-sm font-semibold text-foreground line-clamp-1">
                   {thread.title}
                 </p>
                 <span
-                  className={`shrink-0 rounded-lg px-2 py-1 text-[11px] font-semibold ${typeStyles(thread.type)}`}
+                  className={`hidden shrink-0 rounded-lg px-2 py-1 text-[11px] font-semibold sm:inline-flex ${typeStyles(thread.type)}`}
                 >
                   {CHAT_TYPE_LABELS[thread.type]}
                 </span>
