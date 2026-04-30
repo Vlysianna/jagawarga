@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
   FileText,
+  MessageSquare,
   LogOut,
   type LucideIcon,
 } from "lucide-react";
@@ -27,6 +28,7 @@ function getNavItems(role: UserRole): NavItem[] {
   ];
 
   items.push({ href: `${rolePrefix}/reports`, label: "Laporan", icon: FileText });
+  items.push({ href: `${rolePrefix}/chat`, label: "Chat", icon: MessageSquare });
 
   return items;
 }

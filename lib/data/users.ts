@@ -59,6 +59,25 @@ export const USERS: User[] = [
       provinsi: "Jawa Barat",
     },
   },
+  {
+    id: "w-004",
+    nik: "3201021234560004",
+    name: "warga depok",
+    email: "wargadepok@local.com",
+    password: "password",
+    role: "citizen",
+    phone: "081234567893",
+    address: "Jl. Melati No. 10",
+    scope_id: "pp-001.pd-001.kec-002.kel-002.rw-002.rt-002",
+    detail: {
+      rt: "07",
+      rw: "03",
+      kelurahan: "Depok",
+      kecamatan: "Depok",
+      daerah: "Depok",
+      provinsi: "Jawa Barat",
+    },
+  },
 
   // ketua rt
   {
@@ -80,6 +99,25 @@ export const USERS: User[] = [
       provinsi: "Jawa Barat",
     },
   },
+  {
+    id: "rt-002",
+    nik: "3201021234560011",
+    name: "ketua rt depok",
+    email: "rtdepok@local.com",
+    password: "password",
+    role: "rt",
+    phone: "081234567801",
+    address: "Jl. Melati No. 1",
+    scope_id: "pp-001.pd-001.kec-002.kel-002.rw-002.rt-002",
+    detail: {
+      rt: "07",
+      rw: "03",
+      kelurahan: "Depok",
+      kecamatan: "Depok",
+      daerah: "Depok",
+      provinsi: "Jawa Barat",
+    },
+  },
 
   // ketua rw
   {
@@ -98,6 +136,25 @@ export const USERS: User[] = [
       kelurahan: "Mandar",
       kecamatan: "Mandar",
       daerah: "Mandar",
+      provinsi: "Jawa Barat",
+    },
+  },
+  {
+    id: "rw-002",
+    nik: "3201021234560021",
+    name: "ketua rw depok",
+    email: "rwdepok@local.com",
+    password: "password",
+    role: "rw",
+    phone: "081234567701",
+    address: "Jl. Melati No. 2",
+    scope_id: "pp-001.pd-001.kec-002.kel-002.rw-002",
+    detail: {
+      rt: null,
+      rw: "03",
+      kelurahan: "Depok",
+      kecamatan: "Depok",
+      daerah: "Depok",
       provinsi: "Jawa Barat",
     },
   },
