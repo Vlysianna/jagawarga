@@ -47,7 +47,7 @@ function getNavItems(role: UserRole): NavItem[] {
     { href: `${rolePrefix}/reports`, label: "Laporan", icon: FileText },
   ];
 
-  if (role === "citizen")
+  if (role === "citizen" || role === "rt")
     items.push({ href: `${rolePrefix}/kas`, label: "Kas", icon: Wallet });
 
   if (role === "citizen" || role === "rt") {
