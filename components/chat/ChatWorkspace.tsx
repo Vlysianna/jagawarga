@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { MessageSquare, Send, ArrowUpRight } from "lucide-react";
+import { MessageSquare, Send, ArrowLeft, ArrowUpRight } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import Button from "@/components/ui/Button";
 import { CHAT_TYPE_LABELS, ChatMessage, ChatThread } from "@/lib/types/chat";
@@ -42,6 +42,7 @@ export default function ChatWorkspace({
   const [threads, setThreads] = useState(baseThreads);
   const [selectedId, setSelectedId] = useState("");
   const [draft, setDraft] = useState("");
+  const [mobileView, setMobileView] = useState<"list" | "chat">("list");
   const messageCounter = useRef(0);
 
   if (!user) {
@@ -110,8 +111,36 @@ export default function ChatWorkspace({
         icon={MessageSquare}
       />
 
+      <div className="mb-4 grid grid-cols-2 gap-2 xl:hidden">
+        <button
+          type="button"
+          onClick={() => setMobileView("list")}
+          className={`rounded-xl px-4 py-2.5 text-sm font-medium transition-colors ${
+            mobileView === "list"
+              ? "bg-blue-primary text-white"
+              : "border border-neutral-border bg-white text-neutral-dark"
+          }`}
+        >
+          Daftar Chat
+        </button>
+        <button
+          type="button"
+          onClick={() => setMobileView("chat")}
+          disabled={!selectedThread}
+          className={`rounded-xl px-4 py-2.5 text-sm font-medium transition-colors ${
+            mobileView === "chat"
+              ? "bg-blue-primary text-white"
+              : "border border-neutral-border bg-white text-neutral-dark"
+          } disabled:cursor-not-allowed disabled:opacity-50`}
+        >
+          Percakapan
+        </button>
+      </div>
+
       <div className="grid gap-6 xl:grid-cols-[320px_minmax(0,1fr)]">
-        <section className="space-y-4">
+        <section
+          className={`space-y-4 ${mobileView === "chat" ? "hidden xl:block" : ""}`}
+        >
           <div className="bg-white rounded-2xl border border-neutral-border overflow-hidden">
             <div className="px-4 py-3 border-b border-neutral-border">
               <h2 className="text-sm font-semibold text-foreground">
@@ -130,13 +159,19 @@ export default function ChatWorkspace({
                 title="Ruang RT"
                 threads={visibleRtGroupThreads}
                 selectedId={selectedThread?.id ?? ""}
-                onSelect={setSelectedId}
+                onSelect={(id) => {
+                  setSelectedId(id);
+                  setMobileView("chat");
+                }}
               />
               <ChatSection
                 title="Private"
                 threads={visiblePrivateThreads}
                 selectedId={selectedThread?.id ?? ""}
-                onSelect={setSelectedId}
+                onSelect={(id) => {
+                  setSelectedId(id);
+                  setMobileView("chat");
+                }}
               />
             </div>
           </div>
@@ -173,10 +208,20 @@ export default function ChatWorkspace({
           </div>
         </section>
 
-        <section className="flex min-h-[32rem] flex-col overflow-hidden rounded-2xl border border-neutral-border bg-white">
+        <section
+          className={`flex min-h-[32rem] flex-col overflow-hidden rounded-2xl border border-neutral-border bg-white ${mobileView !== "chat" ? "hidden xl:flex" : ""}`}
+        >
           {selectedThread ? (
             <>
               <div className="border-b border-neutral-border px-4 py-4 sm:px-5">
+                <button
+                  type="button"
+                  onClick={() => setMobileView("list")}
+                  className="mb-3 inline-flex items-center gap-2 rounded-lg px-2 py-1 text-xs font-medium text-neutral-text hover:bg-neutral-bg xl:hidden"
+                >
+                  <ArrowLeft size={14} />
+                  Kembali ke daftar
+                </button>
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h2 className="text-lg font-bold text-foreground">
@@ -194,7 +239,7 @@ export default function ChatWorkspace({
                 </div>
               </div>
 
-              <div className="flex-1 space-y-4 bg-neutral-bg/50 px-4 py-4 sm:px-5 sm:py-5">
+              <div className="flex-1 space-y-4 overflow-y-auto bg-neutral-bg/50 px-4 py-4 sm:px-5 sm:py-5">
                 {selectedThread.messages.map((message) => {
                   const isOwn = message.authorId === user.id;
 

@@ -72,8 +72,49 @@ export default function KasPage() {
           </div>
         </div>
 
-        <div className="mt-4 overflow-x-auto">
-          <table className="w-full text-sm">
+        <div className="mt-4 space-y-3 md:hidden">
+          {KAS_USAGES.map((usage) => (
+            <article
+              key={usage.id}
+              className="rounded-xl border border-neutral-border bg-neutral-bg/40 p-4"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-sm font-semibold text-foreground">
+                    {usage.title}
+                  </p>
+                  <p className="mt-1 text-xs text-neutral-text">
+                    {formatDate(usage.date)}
+                  </p>
+                </div>
+                <p className="text-right text-sm font-semibold text-foreground">
+                  {formatCurrency(usage.amount)}
+                </p>
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-3 text-xs text-neutral-text">
+                <div>
+                  <p className="font-medium text-neutral-dark">Kategori</p>
+                  <p className="mt-1">{KAS_CATEGORY_LABELS[usage.category]}</p>
+                </div>
+                <div>
+                  <p className="font-medium text-neutral-dark">Penyedia</p>
+                  <p className="mt-1">{usage.vendor}</p>
+                </div>
+                <div>
+                  <p className="font-medium text-neutral-dark">Disetujui</p>
+                  <p className="mt-1">{usage.approvedBy}</p>
+                </div>
+                <div>
+                  <p className="font-medium text-neutral-dark">Catatan</p>
+                  <p className="mt-1">{usage.note || "-"}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-4 hidden overflow-x-auto md:block">
+          <table className="w-full min-w-[760px] text-sm">
             <thead>
               <tr className="text-left text-neutral-text border-b border-neutral-border">
                 <th className="py-2 pr-3 font-medium">Tanggal</th>

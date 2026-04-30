@@ -31,7 +31,7 @@ export default function LoginPage() {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-blue-border/50 overflow-hidden">
       {/* Card Header */}
-      <div className="bg-blue-primary px-6 py-5 text-center">
+      <div className="bg-blue-primary px-4 py-5 text-center sm:px-6">
         <h1 className="text-2xl font-bold text-white">Masuk</h1>
         <p className="text-blue-border mt-1 text-sm">
           Masuk ke akun JagaWarga Anda
@@ -39,7 +39,7 @@ export default function LoginPage() {
       </div>
 
       {/* Card Body */}
-      <div className="px-6 py-6 space-y-6">
+      <div className="space-y-6 px-4 py-6 sm:px-6">
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input

@@ -69,7 +69,6 @@ export default function Sidebar() {
   const [mobileChatOpen, setMobileChatOpen] = useState(false);
   const user: AuthUser | null = mounted ? getAuthUser() : null;
   const activeChatMode = getActiveChatMode(searchParams);
-  const showMobileChatChildren = mobileChatOpen && pathname.includes("/chat");
 
   useEffect(() => {
     queueMicrotask(() => setMounted(true));
@@ -227,8 +226,8 @@ export default function Sidebar() {
                 key={item.label}
                 className="relative flex min-w-0 flex-1 justify-center"
               >
-                {showMobileChatChildren ? (
-                  <div className="absolute bottom-full mb-2 flex w-full min-w-[9rem] flex-col gap-2 rounded-2xl border border-neutral-border bg-white p-2 shadow-lg shadow-slate-200/70">
+                {mobileChatOpen ? (
+                  <div className="absolute bottom-full mb-2 flex w-full min-w-36 flex-col gap-2 rounded-2xl border border-neutral-border bg-white p-2 shadow-lg shadow-slate-200/70">
                     {item.children.map((child) => {
                       const childActive =
                         pathname.includes("/chat") &&
@@ -255,6 +254,7 @@ export default function Sidebar() {
                 <button
                   type="button"
                   onClick={() => setMobileChatOpen((current) => !current)}
+                  onBlur={() => setMobileChatOpen(false)}
                   className={`flex min-w-0 flex-1 flex-col items-center justify-center rounded-2xl px-2 py-2 text-[11px] font-medium transition-colors ${
                     active
                       ? "bg-blue-light text-blue-primary"
@@ -266,7 +266,7 @@ export default function Sidebar() {
                   <ChevronUp
                     size={12}
                     className={`mt-1 transition-transform ${
-                      showMobileChatChildren ? "" : "rotate-180"
+                      mobileChatOpen ? "" : "rotate-180"
                     }`}
                   />
                 </button>

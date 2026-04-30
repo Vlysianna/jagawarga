@@ -61,7 +61,7 @@ export default function RTReportsPage() {
           </Link>
         }
       />
-      <div className="flex gap-1 mb-5 bg-neutral-bg rounded-xl p-1 max-w-md">
+      <div className="mb-5 grid w-full max-w-2xl grid-cols-1 gap-1 rounded-xl bg-neutral-bg p-1 sm:grid-cols-2">
         <button
           onClick={() => setTab("incoming")}
           className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors cursor-pointer ${

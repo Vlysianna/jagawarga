@@ -16,7 +16,6 @@ import {
 interface EscalationTimelineProps {
   escalations: ReportEscalation[];
   currentLevel: ReportLevel;
-  currentStatus: string;
 }
 
 function StepIcon({ status }: { status: string }) {
@@ -67,7 +66,6 @@ function formatDate(dateStr: string) {
 export default function EscalationTimeline({
   escalations,
   currentLevel,
-  currentStatus,
 }: EscalationTimelineProps) {
   const currentIdx = REPORT_LEVEL_ORDER.indexOf(currentLevel);
 
@@ -77,12 +75,15 @@ export default function EscalationTimeline({
         <p className="text-xs font-medium text-neutral-text mb-3 uppercase tracking-wide">
           Progres Eskalasi
         </p>
-        <div className="flex items-center gap-1 overflow-x-auto pb-1">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 pr-1">
           {REPORT_LEVEL_ORDER.map((level, idx) => {
             const isActive = idx <= currentIdx;
             const isCurrent = idx === currentIdx;
             return (
-              <div key={level} className="flex min-w-14 flex-1 items-center gap-1">
+              <div
+                key={level}
+                className="flex min-w-[4.5rem] flex-1 items-center gap-1"
+              >
                 <div className="flex flex-1 flex-col items-center">
                   <div
                     className={`w-full h-2 rounded-full ${
@@ -90,7 +91,7 @@ export default function EscalationTimeline({
                     }`}
                   />
                   <span
-                    className={`mt-1.5 text-center text-[10px] font-medium ${
+                    className={`mt-1.5 whitespace-nowrap text-center text-[10px] font-medium ${
                       isCurrent
                         ? "text-blue-primary font-bold"
                         : isActive
@@ -136,7 +137,7 @@ export default function EscalationTimeline({
                     Estimasi: Rp {esc.estimatedBudget.toLocaleString("id-ID")}
                   </p>
                 )}
-                <div className="flex items-center gap-3 mt-1.5 text-xs text-neutral-text">
+                <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-text">
                   <span>{formatDate(esc.date)}</span>
                   {esc.respondedBy && (
                     <span>oleh {esc.respondedBy}</span>

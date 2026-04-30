@@ -18,8 +18,8 @@ export default function PageHeader({
   actions,
 }: PageHeaderProps) {
   return (
-    <div className="bg-white border-b border-neutral-border px-6 py-5 -m-6 mb-6">
-      <div className="flex items-start justify-between gap-4">
+    <div className="-mx-4 -mt-4 mb-6 border-b border-neutral-border bg-white px-4 py-4 sm:-mx-6 sm:-mt-6 sm:px-6 sm:py-5 md:-mx-8 md:px-8">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex items-start gap-3">
           {backHref && (
             <Link
@@ -41,7 +41,11 @@ export default function PageHeader({
             )}
           </div>
         </div>
-        {actions && <div className="flex items-center gap-2 shrink-0">{actions}</div>}
+        {actions && (
+          <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto sm:shrink-0 sm:justify-end">
+            {actions}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col bg-blue-light">
+    <div className="min-h-dvh flex flex-col bg-blue-light">
       {/* Header */}
-      <header className="w-full bg-blue-primary px-6 py-4">
+      <header className="w-full bg-blue-primary px-4 py-4 sm:px-6">
         <Link href="/" className="flex items-center gap-3">
           <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
             <span className="text-blue-primary font-bold text-lg">JW</span>
@@ -17,7 +17,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       </header>
 
       {/* Content */}
-      <main className="flex-1 flex items-center justify-center px-4 py-10">
+      <main className="flex flex-1 items-center justify-center px-4 py-8 sm:py-10">
         <div className="w-full max-w-md">{children}</div>
       </main>
     </div>
