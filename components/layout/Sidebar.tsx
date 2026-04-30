@@ -39,7 +39,9 @@ function getNavItems(role: UserRole): NavItem[] {
       icon: MessageSquare,
       children: [
         { href: `${rolePrefix}/chat?mode=private`, label: "Private" },
-        { href: `${rolePrefix}/chat?mode=rt`, label: "Chat RT" },
+        ...(role === "rt" || role === "citizen"
+          ? [{ href: `${rolePrefix}/chat?mode=rt`, label: "Chat RT" }]
+          : []),
       ],
     },
     { href: `${rolePrefix}/reports`, label: "Laporan", icon: FileText },
