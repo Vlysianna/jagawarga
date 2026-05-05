@@ -19,6 +19,7 @@ export interface UserDetail {
 }
 
 export interface User {
+  status: "tetap" | "kontrak" | undefined;
   id: string;
   nik?: string;
   name: string;

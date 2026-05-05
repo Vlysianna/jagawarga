@@ -23,6 +23,7 @@ export const USERS: User[] = [
       daerah: "Cipayung",
       provinsi: "Jawa Barat",
     },
+    status: "tetap"
   },
   {
     id: "w-002",
@@ -45,6 +46,7 @@ export const USERS: User[] = [
       daerah: "Cipayung",
       provinsi: "Jawa Barat",
     },
+    status: "tetap"
   },
   {
     id: "w-003",
@@ -67,6 +69,7 @@ export const USERS: User[] = [
       daerah: "Depok",
       provinsi: "Jawa Barat",
     },
+    status: "kontrak"
   },
   {
     id: "w-004",
@@ -89,6 +92,7 @@ export const USERS: User[] = [
       daerah: "Depok",
       provinsi: "Jawa Barat",
     },
+    status: "kontrak"
   },
 
   // ketua rt
@@ -110,6 +114,7 @@ export const USERS: User[] = [
       daerah: "Mandar",
       provinsi: "Jawa Barat",
     },
+    status: undefined
   },
   {
     id: "rt-002",
@@ -129,6 +134,7 @@ export const USERS: User[] = [
       daerah: "Depok",
       provinsi: "Jawa Barat",
     },
+    status: undefined
   },
 
   // ketua rw
@@ -150,6 +156,7 @@ export const USERS: User[] = [
       daerah: "Mandar",
       provinsi: "Jawa Barat",
     },
+    status: undefined
   },
   {
     id: "rw-002",
@@ -169,6 +176,7 @@ export const USERS: User[] = [
       daerah: "Depok",
       provinsi: "Jawa Barat",
     },
+    status: undefined
   },
 
   // kelurahan
@@ -189,6 +197,7 @@ export const USERS: User[] = [
       daerah: "Mandar",
       provinsi: "Jawa Barat",
     },
+    status: undefined
   },
   {
     id: "kel-002",
@@ -207,6 +216,7 @@ export const USERS: User[] = [
       daerah: "Depok",
       provinsi: "Jawa Barat",
     },
+    status: undefined
   },
 
   // kecamatan
@@ -227,6 +237,7 @@ export const USERS: User[] = [
       daerah: "Mandar",
       provinsi: "Jawa Barat",
     },
+    status: undefined
   },
   {
     id: "kec-002",
@@ -245,6 +256,7 @@ export const USERS: User[] = [
       daerah: "Depok",
       provinsi: "Jawa Barat",
     },
+    status: undefined
   },
 
   // PEMDA
@@ -266,6 +278,7 @@ export const USERS: User[] = [
       daerah: "Mandar",
       provinsi: "Jawa Barat",
     },
+    status: undefined
   },
 
   // PEMPROV
@@ -287,5 +300,6 @@ export const USERS: User[] = [
       daerah: null,
       provinsi: "Jawa Barat",
     },
+    status: undefined
   },
 ];

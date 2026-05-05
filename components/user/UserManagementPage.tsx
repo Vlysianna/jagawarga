@@ -157,6 +157,7 @@ function buildManagedUser(
     gender: managedRole === "citizen" ? form.gender || undefined : undefined,
     scope_id: childScopeId,
     detail: baseDetail,
+    status: managedRole === "citizen" ? "tetap" : undefined,
   };
 }
 
@@ -201,6 +202,8 @@ export default function UserManagementPage() {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    if (!authUser || !managedRole) return;
+
     const nextUser = buildManagedUser(form, authUser, managedRole);
     const nextUsers = upsertUser(nextUser);
     setUsers(nextUsers);
@@ -216,6 +219,7 @@ export default function UserManagementPage() {
   }
 
   function handleEdit(user: User) {
+    if (!authUser) return;
     setForm(toFormState(user, authUser.role));
     setEditingId(user.id);
   }

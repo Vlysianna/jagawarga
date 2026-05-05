@@ -5,8 +5,7 @@ export const REPORTS: Report[] = [
   {
     id: "r-101",
     title: "Saluran Air di Depan Rumah No. 8 Tersumbat",
-    description:
-      "Saluran air di depan rumah No. 8 Blok A tersumbat, airnya menggenang dan bau. Kalau hujan airnya naik sampai ke jalan. Sudah coba bersihkan sendiri tapi tersumbat dalam, butuh alat.",
+    description: "Saluran air di depan rumah No. 8 Blok A tersumbat, airnya menggenang dan bau. Kalau hujan airnya naik sampai ke jalan. Sudah coba bersihkan sendiri tapi tersumbat dalam, butuh alat.",
     category: "infrastructure",
     photo: [],
     authorId: "w-001",
@@ -29,12 +28,14 @@ export const REPORTS: Report[] = [
     deadlineAt: "2026-05-05T09:00:00Z",
     createdAt: "2026-04-28T09:00:00Z",
     updatedAt: "2026-04-28T09:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
   {
     id: "r-102",
     title: "Tiang Listrik Miring di Jalan Anggrek",
-    description:
-      "Tiang listrik di Jalan Anggrek (dekat pos satpam) terlihat miring setelah hujan angin kemarin malam. Khawatir roboh dan membahayakan warga. Mohon dilaporkan ke PLN.",
+    description: "Tiang listrik di Jalan Anggrek (dekat pos satpam) terlihat miring setelah hujan angin kemarin malam. Khawatir roboh dan membahayakan warga. Mohon dilaporkan ke PLN.",
     category: "safety",
     photo: [],
     authorId: "w-003",
@@ -57,12 +58,14 @@ export const REPORTS: Report[] = [
     deadlineAt: "2026-05-06T20:00:00Z",
     createdAt: "2026-04-29T20:00:00Z",
     updatedAt: "2026-04-29T20:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
   {
     id: "r-103",
     title: "Sampah Menumpuk di Lahan Kosong Blok C",
-    description:
-      "Ada tumpukan sampah di lahan kosong dekat Blok C. Baunya sudah mengganggu warga sekitar. Mohon dibersihkan.",
+    description: "Ada tumpukan sampah di lahan kosong dekat Blok C. Baunya sudah mengganggu warga sekitar. Mohon dibersihkan.",
     category: "health",
     photo: [],
     authorId: "w-001",
@@ -82,19 +85,20 @@ export const REPORTS: Report[] = [
         status: "rejected",
         respondedBy: "tesrt",
         respondedAt: "2026-04-21T08:00:00Z",
-        rejectionReason:
-          "Lahan tersebut milik pribadi, bukan area umum RT. Mohon koordinasi langsung dengan pemilik lahan.",
+        rejectionReason: "Lahan tersebut milik pribadi, bukan area umum RT. Mohon koordinasi langsung dengan pemilik lahan.",
       },
     ],
     deadlineAt: "2026-04-27T11:00:00Z",
     createdAt: "2026-04-20T11:00:00Z",
     updatedAt: "2026-04-21T08:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
   {
     id: "r-104",
     title: "Jalan Melati No. 15 Berlubang Besar",
-    description:
-      "Jalan di depan rumah No. 15 berlubang besar (kurang lebih 50cm x 30cm, kedalaman 10cm). Sudah beberapa kali motor hampir jatuh, terutama malam hari. Mohon segera ditindaklanjuti.",
+    description: "Jalan di depan rumah No. 15 berlubang besar (kurang lebih 50cm x 30cm, kedalaman 10cm). Sudah beberapa kali motor hampir jatuh, terutama malam hari. Mohon segera ditindaklanjuti.",
     category: "infrastructure",
     photo: [],
     authorId: "w-002",
@@ -119,14 +123,16 @@ export const REPORTS: Report[] = [
     deadlineAt: "2026-04-16T14:00:00Z",
     createdAt: "2026-04-09T14:00:00Z",
     updatedAt: "2026-04-10T08:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
 
   // RT -> etc with budget
   {
     id: "r-001",
     title: "Perbaikan Jalan Melati No. 15",
-    description:
-      "Jalan di depan rumah No. 15 berlubang besar (50cm x 30cm, kedalaman 10cm). Sudah beberapa kali motor hampir jatuh, terutama malam hari karena tidak ada penerangan di sekitar lubang. Perlu ditambal atau diaspal ulang sepanjang 5 meter.",
+    description: "Jalan di depan rumah No. 15 berlubang besar (50cm x 30cm, kedalaman 10cm). Sudah beberapa kali motor hampir jatuh, terutama malam hari karena tidak ada penerangan di sekitar lubang. Perlu ditambal atau diaspal ulang sepanjang 5 meter.",
     category: "infrastructure",
     estimatedBudget: 15000000,
     photo: [],
@@ -189,12 +195,14 @@ export const REPORTS: Report[] = [
     deadlineAt: "2026-05-20T00:00:00Z",
     createdAt: "2026-04-10T08:00:00Z",
     updatedAt: "2026-04-20T14:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
   {
     id: "r-002",
     title: "Pembersihan Selokan Blok A",
-    description:
-      "Selokan di sepanjang Blok A (kurang lebih 100 meter) tersumbat sampah dan lumpur. Saat hujan deras, air meluap ke jalan dan masuk ke halaman warga. Sudah terjadi 3 kali dalam bulan ini. Butuh alat berat untuk pembersihan karena lumpur sudah mengeras.",
+    description: "Selokan di sepanjang Blok A (kurang lebih 100 meter) tersumbat sampah dan lumpur. Saat hujan deras, air meluap ke jalan dan masuk ke halaman warga. Sudah terjadi 3 kali dalam bulan ini. Butuh alat berat untuk pembersihan karena lumpur sudah mengeras.",
     category: "infrastructure",
     estimatedBudget: 5000000,
     photo: [],
@@ -219,12 +227,14 @@ export const REPORTS: Report[] = [
     deadlineAt: "2026-04-29T08:00:00Z",
     createdAt: "2026-04-22T08:00:00Z",
     updatedAt: "2026-04-22T08:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
   {
     id: "r-003",
     title: "Perbaikan Lampu Jalan Gang Mawar",
-    description:
-      "Lampu jalan di Gang Mawar (dekat rumah Pak Karno) sudah mati lebih dari 2 minggu. Sudah lapor ke PLN tapi belum ada respons. Warga kesulitan lewat malam hari, terutama lansia. Mohon dibantu koordinasi dengan PLN atau pengadaan lampu baru.",
+    description: "Lampu jalan di Gang Mawar (dekat rumah Pak Karno) sudah mati lebih dari 2 minggu. Sudah lapor ke PLN tapi belum ada respons. Warga kesulitan lewat malam hari, terutama lansia. Mohon dibantu koordinasi dengan PLN atau pengadaan lampu baru.",
     category: "facility",
     estimatedBudget: 3000000,
     photo: [],
@@ -282,19 +292,20 @@ export const REPORTS: Report[] = [
         status: "rejected",
         respondedBy: "pemda admin",
         respondedAt: "2026-04-21T11:00:00Z",
-        rejectionReason:
-          "Sudah masuk program Peningkatan PJU Q3 2026. Seluruh lampu area ini akan diganti LED.",
+        rejectionReason: "Sudah masuk program Peningkatan PJU Q3 2026. Seluruh lampu area ini akan diganti LED.",
       },
     ],
     deadlineAt: "2026-04-22T08:00:00Z",
     createdAt: "2026-04-15T08:00:00Z",
     updatedAt: "2026-04-21T11:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
   {
     id: "r-004",
     title: "Perbaikan Pos Ronda Blok A",
-    description:
-      "Atap pos ronda Blok A bocor di beberapa titik. Saat hujan, air masuk dan membasahi kursi serta meja. Cat juga sudah mengelupas. Perlu penggantian atap seng (3 lembar) dan pengecatan ulang.",
+    description: "Atap pos ronda Blok A bocor di beberapa titik. Saat hujan, air masuk dan membasahi kursi serta meja. Cat juga sudah mengelupas. Perlu penggantian atap seng (3 lembar) dan pengecatan ulang.",
     category: "facility",
     estimatedBudget: 2500000,
     photo: [],
@@ -321,12 +332,14 @@ export const REPORTS: Report[] = [
     deadlineAt: "2026-04-25T08:00:00Z",
     createdAt: "2026-04-18T08:00:00Z",
     updatedAt: "2026-04-19T10:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
   {
     id: "r-005",
     title: "Perbaikan Pagar Taman Bermain Anak",
-    description:
-      "Pagar taman bermain anak di area Blok B roboh di sisi timur (kurang lebih 3 meter). Anak-anak bisa keluar ke jalan raya. Sangat berbahaya. Perlu perbaikan segera — pengelasan ulang tiang dan pemasangan pagar baru.",
+    description: "Pagar taman bermain anak di area Blok B roboh di sisi timur (kurang lebih 3 meter). Anak-anak bisa keluar ke jalan raya. Sangat berbahaya. Perlu perbaikan segera — pengelasan ulang tiang dan pemasangan pagar baru.",
     category: "safety",
     estimatedBudget: 4000000,
     photo: [],
@@ -351,12 +364,14 @@ export const REPORTS: Report[] = [
     deadlineAt: "2026-05-05T07:00:00Z",
     createdAt: "2026-04-28T07:00:00Z",
     updatedAt: "2026-04-28T07:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
   {
     id: "r-006",
     title: "Renovasi MCK Umum Blok C",
-    description:
-      "MCK umum di Blok C kondisinya sudah sangat buruk — keran air bocor, lantai retak dan licin, pintu rusak 2 dari 4 bilik. MCK ini digunakan oleh 8 KK yang belum punya kamar mandi sendiri. Perlu renovasi menyeluruh.",
+    description: "MCK umum di Blok C kondisinya sudah sangat buruk — keran air bocor, lantai retak dan licin, pintu rusak 2 dari 4 bilik. MCK ini digunakan oleh 8 KK yang belum punya kamar mandi sendiri. Perlu renovasi menyeluruh.",
     category: "health",
     estimatedBudget: 25000000,
     photo: [],
@@ -399,12 +414,14 @@ export const REPORTS: Report[] = [
     deadlineAt: "2026-04-17T10:00:00Z",
     createdAt: "2026-04-05T08:00:00Z",
     updatedAt: "2026-04-10T10:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
   {
     id: "r-007",
     title: "Perbaikan Jembatan Penyeberangan Blok D",
-    description:
-      "Jembatan penyeberangan di Blok D kondisi lantainya keropos dan pagar pengaman lepas di beberapa titik. Digunakan ratusan warga setiap hari untuk akses ke pasar dan sekolah. Perlu perbaikan menyeluruh — penggantian lantai dan pemasangan ulang pagar.",
+    description: "Jembatan penyeberangan di Blok D kondisi lantainya keropos dan pagar pengaman lepas di beberapa titik. Digunakan ratusan warga setiap hari untuk akses ke pasar dan sekolah. Perlu perbaikan menyeluruh — penggantian lantai dan pemasangan ulang pagar.",
     category: "infrastructure",
     estimatedBudget: 50000000,
     photo: [],
@@ -456,12 +473,14 @@ export const REPORTS: Report[] = [
     deadlineAt: "2026-05-22T00:00:00Z",
     createdAt: "2026-04-18T08:00:00Z",
     updatedAt: "2026-04-22T09:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
   {
     id: "r-008",
     title: "Pengadaan Tempat Sampah Terpilah",
-    description:
-      "Dibutuhkan 20 unit tempat sampah terpilah (organik/anorganik) untuk area Blok A-D. Saat ini warga masih mencampur semua jenis sampah. Program pemilahan sampah dari Dinas LH perlu didukung dengan sarana yang memadai.",
+    description: "Dibutuhkan 20 unit tempat sampah terpilah (organik/anorganik) untuk area Blok A-D. Saat ini warga masih mencampur semua jenis sampah. Program pemilahan sampah dari Dinas LH perlu didukung dengan sarana yang memadai.",
     category: "health",
     estimatedBudget: 8000000,
     photo: [],
@@ -513,5 +532,8 @@ export const REPORTS: Report[] = [
     deadlineAt: "2026-05-25T00:00:00Z",
     createdAt: "2026-04-20T08:00:00Z",
     updatedAt: "2026-04-25T09:00:00Z",
+    history: [
+      {"level": "rt"}
+    ]
   },
 ];

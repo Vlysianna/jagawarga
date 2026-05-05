@@ -22,6 +22,9 @@ export interface ReportEscalation {
 }
 
 export interface Report {
+  history: {
+    level: ReportLevel;
+  }[];
   id: string;
   title: string;
   description: string;
